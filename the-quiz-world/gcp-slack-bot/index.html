@@ -10,22 +10,32 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>The GCP Quiz Bot</title>
+  <title>GCP Quiz Bot</title>
 </head>
 
 <body>
   <div class="container">
-    <h1>The GCP Quiz Bot</h1>
-    <a href="https://slack.com/oauth/authorize?client_id=2160638498.623756808096&scope=bot"><img alt="Add to Slack"
+    <h1>GCP Quiz Bot</h1>
+    <div class="col-xs-1" align="center">
+        <a href="https://slack.com/oauth/authorize?client_id=2160638498.623756808096&scope=bot"><img alt="Add to Slack"
         height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png"
         srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a>
+    </div>
     <br />
-        <span>Gcloud quizzes inside Slack.</span>
-        <h4>To start a quiz, simply type: @GCP_Quiz_Me quiz me!</h4>
-        <h4>Screenshot 1: </h4>
-        <img src="./screenshots/how-to-use.png" class="img-fluid mx-auto d-block" alt="How to use">
-        <h4>Screenshot 2: </h4>
-        <img src="./screenshots/ss-1600-1000-2.png" class="img-fluid mx-auto d-block" alt="How to use">
+    <h4 id="installation">1. Installation </h4>
+    <p>
+      <p>Click on the button <b>Add to Slack</b> to add <b>Gcloud Quiz Bot into your workspace.</b>.</p>
+      <p>To start a quiz, simply type: <i>@gcp_quiz_me quiz me!</i> </p>
+      <p><b>GCP Quiz Bot</b> can be invited to a team's Slack channel, and then any individual can easily start a GCP learning session. To initiate the <b>GCP Quiz Bot</b>, simply type: <i>@gcp_quiz_bot quiz me.</i>
+        The <b>GCP Quiz Bot</b> will respond with a question about a GCP service —and provide (4) possible answers. Participants in the team Slack channel can answer the question by simply selecting one of the possible answers. <b>GCP Quiz Bot</b> will respond to let everyone know who was the quickest to select the answer — and if their answer was correct! To keep playing (and learning), the participants just need to click yes when prompted if they'd like another question.</p>
+      </p>
+    <h4 id="screenshots">2. Screenshots</h4>
+    <p>
+      <p>Screenshot 1: You can have a quiz on direct message.</p>
+      <img src="./screenshots/how-to-use.png" class="img-fluid mx-auto d-block border border-dark" alt="How to use">
+      <p>Screenshot 2: You can have a quiz with everyone on a public channel.</p>
+      <img src="./screenshots/ss-1600-1000-2.png" class="img-fluid mx-auto d-block border border-dark" alt="How to use">
+    </p>
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
