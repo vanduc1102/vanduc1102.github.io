@@ -2,6 +2,11 @@
 
 ## Existence
 
+getBy* and getAllBy* throw an error if nothing is found.
+
+However, the equivalent methods queryBy* and queryAllBy* instead return null or []:
+
+
 ```
 
 expect(getAllByTestId('collection-share-button')).toHaveLength(1);
