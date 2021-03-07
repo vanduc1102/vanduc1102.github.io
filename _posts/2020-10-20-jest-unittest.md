@@ -3,14 +3,13 @@ layout: post
 title:  "Jest Common functions"
 date:   2020-10-20 00:14:27 +0700
 categories: javascript jest reactjs
-comments: true
 ---
 
 ## Existence
 
 `getBy*` and `getAllBy*` throw an error if nothing is found.
 
-However, the equivalent methods `queryBy*` and `queryAllBy*` instead return null or []:
+However, the equivalent methods `queryBy*` and `queryAllBy*` instead return `null` or `[]`:
 
 
 ```
