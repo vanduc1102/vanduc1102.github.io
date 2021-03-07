@@ -35,9 +35,8 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-site:
-  disqus:
-    shortname: a-duck-devloper
+disqus:
+  shortname: a-duck-devloper
 
 # Exclude from processing.
 # The following items will not be processed, by default.
