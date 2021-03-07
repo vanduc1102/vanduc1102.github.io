@@ -1,10 +1,16 @@
-# Jest common
+---
+layout: post
+title:  "Jest Common functions"
+date:   2020-10-20 00:14:27 +0700
+categories: javascript jest reactjs
+comments: true
+---
 
 ## Existence
 
-getBy* and getAllBy* throw an error if nothing is found.
+`getBy*` and `getAllBy*` throw an error if nothing is found.
 
-However, the equivalent methods queryBy* and queryAllBy* instead return null or []:
+However, the equivalent methods `queryBy*` and `queryAllBy*` instead return null or []:
 
 
 ```
@@ -18,7 +24,7 @@ expect(getAllByTestId('collection-share-button')).toHaveLength(1);
 expect(() => getByText('your text')).toThrow('Unable to find an element');
 ```
 
-https://stackoverflow.com/questions/52783144/how-do-you-test-for-the-non-existence-of-an-element-using-jest-and-react-testing
+[https://stackoverflow.com/questions/52783144/how-do-you-test-for-the-non-existence-of-an-element-using-jest-and-react-testing](https://stackoverflow.com/questions/52783144/how-do-you-test-for-the-non-existence-of-an-element-using-jest-and-react-testing)
 
 
 ## Expect on callback function
