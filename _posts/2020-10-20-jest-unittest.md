@@ -15,7 +15,7 @@ My coworker showed me that I can run CLI program with an Docker image and [docke
 Example:
 
 ```
-docker run -it --rm -v "$(pwd)":/var/www/html wordpress:cli make-pot . languages/my-plugin.pot
+docker run -it --rm -v "$(pwd)":/var/www/html wordpress:cli i18n make-pot . languages/my-plugin.pot --debug
 ```
 
 In order to make the [make-pot](https://developer.wordpress.org/cli/commands/i18n/make-pot/) command work, we have to change location to the root folder of `my-plugin`
@@ -27,7 +27,8 @@ In order to make the [make-pot](https://developer.wordpress.org/cli/commands/i18
 - `-v "$(pwd)":/var/www/html`: On docker run, it runs inside an isolated container from our host, so we need to mount the current folder into the docker container, when the command completed, we will have result in our current directory. If we don't mount, docker will run the command and keep the result in side a auto generated container and we won't received anything.
 - `wordpress:cli` : is the docker image, we can search for a lot of images in [DockerHub](https://hub.docker.com/).
 - `make-pot . languages/my-plugin.pot`: it's the command will run inside container, the paths `. languages/my-plugin.pot` are inside container.
+- `--debug`: to debug the process to generate POT file.
 
 ## Tips
 
-When mapping a directory to a container, you should check the `WORKDIR` of the image. E.g: the [wp-cli image](https://github.com/docker-library/wordpress/blob/master/cli/php7.3/alpine/Dockerfile) has `WORKDIR` at `/var/www/html` , also you can change the `workdir` in docker run command with `-w`
+- When mapping a directory to a container, you should check the `WORKDIR` of the image. E.g: the [wp-cli image](https://github.com/docker-library/wordpress/blob/master/cli/php7.3/alpine/Dockerfile) has `WORKDIR` at `/var/www/html` , also you can change the `workdir` in docker run command with `-w`
