@@ -35,8 +35,14 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+header_pages:
+  - about.md
+  - donate.md
+
 disqus:
   shortname: a-duck-devloper
+
+google_analytics: 279767859
 
 # Exclude from processing.
 # The following items will not be processed, by default.
