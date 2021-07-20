@@ -58,4 +58,4 @@ By the way, the initial value of moduleFileExtensions of jest is
 
 So this error wouldn't have happened if I hadn't made any extra settings 😇
 
-Source: https://qiita.com/nekoshita_yuki/items/b20b76cad37a6c9748b8
+Source: [https://qiita.com/nekoshita_yuki/items/b20b76cad37a6c9748b8](https://qiita.com/nekoshita_yuki/items/b20b76cad37a6c9748b8)
