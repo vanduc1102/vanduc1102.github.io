@@ -1,9 +1,10 @@
 ---
 layout: page
 title: Donate
-description: Tất cả những link đăng ký ở dưới đều miễn phí, các bạn hãy đăng ký bằng tài khoản chính mà các bạn hay dùng để mình có thêm chút động lực tiếp tục làm nội dung chia sẻ cho mọi người. Cảm ơn các bạn.
 permalink: /donate/
 locale: vi_VN
+image: assets/img/donate-coins.jpeg
+description: Tất cả những link đăng ký ở dưới đều miễn phí, các bạn hãy đăng ký bằng tài khoản chính mà các bạn hay dùng để mình có thêm chút động lực tiếp tục làm nội dung chia sẻ cho mọi người. Cảm ơn các bạn.
 ---
 
 <div class="container">
