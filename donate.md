@@ -1,16 +1,16 @@
 ---
 layout: page
-title: Donate
+title: Ủng hộ kênh
 permalink: /donate/
 ---
 
 <div class="container">
-  <h1>Ủng hộ kênh</h1>
+  <h2>Tất cả những link đăng ký ở dưới đều miễn phí, các bạn hãy đăng ký bằng tài khoản chính mà các bạn hay dùng.</h2>
 
   <h4>Giảm 10% phí giao dịch với Binance</h4>
   <p><a href="https://www.binance.com/en/register?ref=DNG0OYXS"> Link đăng ký</a></p>
 
-  <h4>Nhận 20 ngàn khi mua hàng online với shopback</h4>
+  <h4>Nhận ngay 20 ngàn, và hoàn tiền mỗi khi mua hàng online với Shopback</h4>
   <p><a href="https://app.shopback.com/955UQLZmZhb"> Link đăng ký</a></p>
 
   <h4>Đăng ký tài khoản và sử dụng ZaloPay nhận thưởng lên đến 1 triệu.</h4>
@@ -21,5 +21,7 @@ permalink: /donate/
 
   <h4>Đăng ký tài khoản và sử dụng Etoro để nhận thưởng 50USD</h4>
   <p><a href="https://etoro.tw/3froME0"> Link đăng ký</a></p>
+
+  <h2> Cảm ơn các bạn nhiều. </h2>
 
 </div>
