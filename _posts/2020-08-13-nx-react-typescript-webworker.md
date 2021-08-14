@@ -5,7 +5,7 @@ date:   2021-08-13 12:00:00 +0700
 categories: [nx, reactjs, webworker, solc, solidity, typescript]
 ---
 
-![Demo Compiling Solidity Smart Contract in React with WebWorker](/assets/assets/img/2021-08-13-react-webworker-compile-solidity.png)
+![Demo Compiling Solidity Smart Contract in React with WebWorker](/assets/img/2021-08-13-react-webworker-compile-solidity.png)
 
 In this post I gonna compile a [Solidity](https://docs.soliditylang.org/) program with [Solidity Compiler JS](https://github.com/ethereum/solc-js) in [browsers supported WebWorker](https://caniuse.com/webworkers).
 
