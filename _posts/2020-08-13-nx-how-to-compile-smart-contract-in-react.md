@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Using ReactJS with WebWorker to compile smart contract
+title:  How to compile Smart Contract in React with WebWorker
 date:   2021-08-13 12:00:00 +0700
 categories: [reactjs]
 tags: [nx, webworker, solc, solidity, typescript]
