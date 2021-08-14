@@ -44,7 +44,7 @@ NX is using Webpack underhood, In this post we use [worker-plugin](https://www.n
 		};
 	};
 	```
-As you can see we have some polyfill configurations for [NodeJS in Webpack](https://v4.webpack.js.org/configuration/node/)
+	As you can see we have some polyfill configurations for [NodeJS in Webpack](https://v4.webpack.js.org/configuration/node/)
 
 1. Add `webpack.json` to [workspace.json](https://github.com/vanduc1102/reactjs-practices/blob/main/projects/nx-webworker-sample/workspace.json#L24) file.
 
@@ -53,7 +53,7 @@ As you can see we have some polyfill configurations for [NodeJS in Webpack](http
 	```
 Here is the detail of [webpackConfig](https://nx.dev/latest/react/web/build#webpackconfig) option.
 
-## Creating Solidity compiler worker
+## Compile Solidity Smart Contract with WebWorker
 
 1. `Solc@0.8.7-fixed` doesn't have typescript declaration yet, we have to add a type declaration manually. Simply add `declare module 'solc/wrapper';` to `*.d.ts` file in your project.
 
@@ -99,7 +99,7 @@ Here is the detail of [webpackConfig](https://nx.dev/latest/react/web/build#webp
 	}
 	```
 
-2. Create a Promisify function to call `SolcJs.worker.ts` and wait until the compilation finished.
+1. Create a Promisify function to call `SolcJs.worker.ts` and wait until the compilation finished.
 	```ts
 	const compileWithWorker = async (data: any) => {
 			return new Promise((resolve, reject) => {
@@ -114,9 +114,9 @@ Here is the detail of [webpackConfig](https://nx.dev/latest/react/web/build#webp
 			});
 	};
 	```
-Thank to the great [answer](https://stackoverflow.com/questions/41423905/wait-for-several-web-workers-to-finish) from [T.J. Crower](https://stackoverflow.com/users/157247/t-j-crowder).
+	Thank to this great [answer](https://stackoverflow.com/questions/41423905/wait-for-several-web-workers-to-finish) from [T.J. Crower](https://stackoverflow.com/users/157247/t-j-crowder)
 
-3. Now we are ready to use WebWorker to compile a Simple Solidity Smart Contract.
+1. Now we are ready to use WebWorker to compile a Simple Solidity Smart Contract.
 	```ts
 	const handleCompile = async () => {
 			setCompiling(true);
