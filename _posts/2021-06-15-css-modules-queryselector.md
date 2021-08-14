@@ -2,7 +2,8 @@
 layout: post
 title: CSS modules with CSS selectors
 date:   2021-06-15 16:43:00 +0700
-categories: [CSS, ReacJS, CSSModules]
+categories: [reactjs]
+tags: [CSS, reactjs, CSSModules]
 ---
 
 # How to use CSS selectors in CSS Modules

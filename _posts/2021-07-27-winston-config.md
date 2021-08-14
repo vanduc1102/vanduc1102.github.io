@@ -2,7 +2,8 @@
 layout: post
 title:  Winston3 configuration with namespace
 date:   2021-07-27 00:14:27 +0700
-categories: [nodejs, typescript]
+categories: [nodejs]
+tags: [nodejs, typescript]
 ---
 
 ## Configuration

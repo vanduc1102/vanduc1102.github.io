@@ -2,7 +2,8 @@
 layout: post
 title: Running CLI program with Docker image
 date:   2021-04-30 16:43:00 +0700
-categories: [Docker, PHP]
+categories: [php]
+tags: [Docker, PHP]
 ---
 
 # Running CLI program with Docker

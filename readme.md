@@ -12,3 +12,9 @@ Run these commands to start development:
 bundle update
 bundle exec jekyll serve
 ```
+
+## Notice
+
+DO NOT change `categories` of `posts` as Category is included in URL.
+
+Sample: http://localhost:4000/reactjs/2021/08/13/nx-react-typescript-webworker.html

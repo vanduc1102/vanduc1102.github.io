@@ -2,7 +2,8 @@
 layout: post
 title:  Jest common functions
 date:   2020-10-20 00:14:27 +0700
-categories: [javascript, jest, reactjs]
+categories: [reactjs]
+tags: [javascript, jest, reactjs]
 ---
 
 # Jest common functions

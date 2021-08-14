@@ -2,7 +2,8 @@
 layout: post
 title: Cannot find module spdx-license-ids from .../spdx-expression-parse/scan.js
 date:   2021-07-20 16:43:00 +0700
-categories: [ NodeJs, Jest, SwaggerUI]
+categories: [ NodeJs]
+tags: [ NodeJs, Jest, SwaggerUI]
 ---
 
 ## Error
