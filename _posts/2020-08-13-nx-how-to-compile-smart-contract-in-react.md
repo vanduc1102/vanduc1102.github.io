@@ -1,14 +1,14 @@
 ---
 layout: post
-title:  How to compile Smart Contract in React with WebWorker
+title:  How to compile Smart Contracts in React with WebWorker
 date:   2021-08-13 12:00:00 +0700
 categories: [reactjs]
 tags: [nx, webworker, solc, solidity, typescript]
 ---
 
-![Demo Compiling Solidity Smart Contract in React with WebWorker](/assets/img/2021-08-13-react-webworker-compile-solidity.png)
+![Demo Compiling A Solidity Smart Contract in React with WebWorker](/assets/img/2021-08-13-react-webworker-compile-solidity.png)
 
-In this post I gonna compile a [Solidity](https://docs.soliditylang.org/) program with [Solidity Compiler JS](https://github.com/ethereum/solc-js) in [browsers supported WebWorker](https://caniuse.com/webworkers).
+In this post I gonna compile a [Solidity](https://docs.soliditylang.org/) Smart Contract with [Solidity Compiler JS](https://github.com/ethereum/solc-js) in [browsers supported WebWorker](https://caniuse.com/webworkers).
 
 Tools and plugins:
 ```
@@ -20,7 +20,7 @@ webpack@4 (included in NX)
 
 Compiling a smart contract with Solc is a heavy task for browsers, and for such heavy task we need to use [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers).
 
-The tool for setting up the project is [NX](https://nx.dev/). it is great tool to create monos-repository.
+The tool for setting up the project is [NX](https://nx.dev/). NX is a great tool to create monos-repository.
 
 ## Configuring WebWorker for NX
 
