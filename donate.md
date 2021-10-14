@@ -10,8 +10,20 @@ description: Tất cả những link đăng ký ở dưới đều miễn phí, 
 <div class="container">
   <h2>Tất cả những link đăng ký ở dưới đều miễn phí, các bạn hãy đăng ký bằng tài khoản chính mà các bạn hay dùng.</h2>
 
+	<hr />
+
   <h4>Giảm 10% phí giao dịch với Binance</h4>
   <p><a href="https://www.binance.com/en/register?ref=DNG0OYXS"> Link đăng ký</a></p>
+
+	<h4>Giảm 10% phí giao dịch với Huobi</h4>
+  <p><a href="https://www.huobi.com/en-us/topic/double-reward/?invite_code=a9y63223"> Link đăng ký</a></p>
+
+	<h4>Tạo tài khoản giao dịch trên sàn FTX</h4>
+  <p><a href="https://ftx.com/#a=34340991"> Link đăng ký</a></p>
+
+
+  <h4>Đăng ký tài khoản và sử dụng Etoro để nhận thưởng 50USD</h4>
+  <p><a href="https://etoro.tw/3froME0"> Link đăng ký</a></p>
 
   <h4>Nhận ngay 20 ngàn, và hoàn tiền mỗi khi mua hàng online với Shopback</h4>
   <p><a href="https://app.shopback.com/955UQLZmZhb"> Link đăng ký</a></p>
@@ -22,8 +34,7 @@ description: Tất cả những link đăng ký ở dưới đều miễn phí, 
   <h4>Đăng ký tài khoản và sử dụng MOMO nhận thưởng lên đến 600 ngàn.</h4>
   <p><a href="https://momo.vn:4445/referral/MDk3NjUxNTAzMiZsaXhpMjAxOQ=="> Link đăng ký</a></p>
 
-  <h4>Đăng ký tài khoản và sử dụng Etoro để nhận thưởng 50USD</h4>
-  <p><a href="https://etoro.tw/3froME0"> Link đăng ký</a></p>
+	<hr />
 
   <h2> Cảm ơn các bạn nhiều. </h2>
 
