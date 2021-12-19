@@ -8,7 +8,7 @@ tags: [nodejs, web3]
 
 This is NodeJS Web3 example
 
-- Register an https://infura.io/ account, they provides endpoints to access to ETH Node for testing.
+Register an <https://infura.io/> account, they provides endpoints to access to ETH Node for testing.
 
 Dependencies
 
@@ -16,7 +16,7 @@ Dependencies
 
 To create a network instance: You can listen on transactions, events, of the whole chain.
 
-```
+```js
 const Web3 = require('web3');
 
 const { INFURA_WSS_ENDPOINT } = process.env;
@@ -31,7 +31,7 @@ web3Instance.eth.getBlockNumber()
 
 To create a contract instance - ERC20: You can listen events, call methods of a given contract.
 
-```
+```js
 
 const Web3EthContract = require('web3-eth-contract');
 const ContractABI = require('./ContractABI.json');
@@ -56,4 +56,4 @@ contractInstance.events.Transfer().on('data', event => console.log("Transfer: ",
 
 ```
 
-Repository on github: https://github.com/vanduc1102/samples/tree/master/nodejs/web3-nodejs
+Repository on github: <https://github.com/vanduc1102/samples/tree/master/nodejs/web3-nodejs>

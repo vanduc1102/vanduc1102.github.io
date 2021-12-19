@@ -53,4 +53,4 @@ In order to use the `webpack.config.js`, we have to change the default of NX set
 +	"webpackConfig": "apps/frontend/webpack.config.js"
 ```
 
-Repository on github: https://github.com/coinconket/conketkemon
+Repository on github: <https://github.com/coinconket/conketkemon>
