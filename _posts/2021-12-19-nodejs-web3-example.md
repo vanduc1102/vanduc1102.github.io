@@ -6,15 +6,13 @@ categories: [nodejs]
 tags: [nodejs, web3]
 ---
 
-This is NodeJS Web3 example
-
-Register an <https://infura.io/> account, they provides endpoints to access to ETH Node for testing.
+Before we begin, let register an <https://infura.io/> account, they provides endpoints to access to ETH Node for testing.
 
 Dependencies
 
 `yarn add web3`
 
-To create a network instance: You can listen on transactions, events, of the whole chain.
+## To create a network instance: You can listen on transactions, events, of the whole chain.
 
 ```js
 const Web3 = require('web3');
@@ -29,7 +27,7 @@ web3Instance.eth.getBlockNumber()
 ```
 
 
-To create a contract instance - ERC20: You can listen events, call methods of a given contract.
+## To create a contract instance - ERC20: You can listen events and call methods of a given contract.
 
 ```js
 
