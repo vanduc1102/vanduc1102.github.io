@@ -111,6 +111,6 @@ public class Main {
 
 ### References:
 
-https://medium.com/@knoldus/functional-java-lets-understand-the-higher-order-function-1a4d4e4f02af
+1. [https://medium.com/@knoldus/functional-java-lets-understand-the-higher-order-function-1a4d4e4f02af](https://medium.com/@knoldus/functional-java-lets-understand-the-higher-order-function-1a4d4e4f02af)
 
-https://www.baeldung.com/java-8-functional-interfaces
+1. [https://www.baeldung.com/java-8-functional-interfaces](https://www.baeldung.com/java-8-functional-interfaces)
