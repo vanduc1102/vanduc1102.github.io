@@ -21,6 +21,12 @@ bundle update
 bundle exec jekyll serve
 ```
 
+Build for production
+
+```
+JEKYLL_ENV=production bundle exec jekyll build
+```
+
 ## Notice
 
 DO NOT change `categories` of `posts` as Category is included in URL.
