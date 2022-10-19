@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  How to compile Smart Contracts in React with WebWorker
-date:   2021-08-13 12:00:00 +0700
+title: How to compile Smart Contracts in React with WebWorker
+date: 2021-08-13 12:00:00 +0700
 categories: [reactjs]
 tags: [nx, webworker, solc, solidity, typescript]
 ---
@@ -11,6 +11,7 @@ tags: [nx, webworker, solc, solidity, typescript]
 In this post I gonna compile a [Solidity](https://docs.soliditylang.org/) Smart Contract with [Solidity Compiler JS](https://github.com/ethereum/solc-js) in [browsers supported WebWorker](https://caniuse.com/webworkers).
 
 Tools and plugins:
+
 ```
 nx@12.7.1
 worker-plugin@5.0.1
@@ -26,32 +27,34 @@ The tool for setting up the project is [NX](https://nx.dev/). NX is a great tool
 
 NX is using Webpack underhood, In this post we use [worker-plugin](https://www.npmjs.com/package/worker-plugin) to make WebWorker work with Webpack. In order to config `worker-plugin` we need to extend the default configuration of Webpack inside NX.
 
-1. Create [webpack.json](https://github.com/vanduc1102/coinconket/blob/master/apps/frontend/webpack.config.js) in root folder of `frontend` module.
+1.  Create [webpack.json](https://github.com/vanduc1102/coinconket/blob/master/apps/frontend/webpack.config.js) in root folder of `frontend` module.
 
-	```js
-	const WorkerPlugin = require('worker-plugin');
-	const nrwlConfig = require('@nrwl/react/plugins/webpack.js');
+    ```js
+    const WorkerPlugin = require("worker-plugin");
+    const nrwlConfig = require("@nrwl/react/plugins/webpack.js");
 
-	module.exports = (config, context) => {
-		nrwlConfig(config);
-		return {
-			...config,
-			node: {
-				Buffer: true,
-				module: 'empty',
-			},
-			plugins: [new WorkerPlugin(), ...config.plugins],
-		};
-	};
-	```
-	As you can see we have some polyfill configurations for [NodeJS in Webpack](https://v4.webpack.js.org/configuration/node/)
+    module.exports = (config, context) => {
+    	nrwlConfig(config);
+    	return {
+    		...config,
+    		node: {
+    			Buffer: true,
+    			module: "empty",
+    		},
+    		plugins: [new WorkerPlugin(), ...config.plugins],
+    	};
+    };
+    ```
 
-1. Add `webpack.json` to [workspace.json](https://github.com/vanduc1102/reactjs-practices/blob/main/projects/nx-webworker-sample/workspace.json#L24) file.
+    As you can see we have some polyfill configurations for [NodeJS in Webpack](https://v4.webpack.js.org/configuration/node/)
 
-	```js
-	"webpackConfig": "apps/frontend/webpack.config.js"
-	```
-Here is the detail of [webpackConfig](https://nx.dev/latest/react/web/build#webpackconfig) option.
+1.  Add `webpack.json` to [workspace.json](https://github.com/vanduc1102/reactjs-practices/blob/main/projects/nx-webworker-sample/workspace.json#L24) file.
+
+        ```js
+        "webpackConfig": "apps/frontend/webpack.config.js"
+        ```
+
+    Here is the detail of [webpackConfig](https://nx.dev/latest/react/web/build#webpackconfig) option.
 
 ## Compile Solidity Smart Contract with WebWorker
 
@@ -59,73 +62,75 @@ Here is the detail of [webpackConfig](https://nx.dev/latest/react/web/build#webp
 
 1. Creating a worker [SolcJs.worker.ts](https://github.com/vanduc1102/reactjs-practices/blob/main/projects/nx-webworker-sample/apps/frontend/src/SolcJs.worker.ts) file.
 
-	```ts
-	/* eslint-disable no-restricted-globals */
-	import * as wrapper from 'solc/wrapper';
-	const ctx: Worker = self as any;
+   ```ts
+   /* eslint-disable no-restricted-globals */
+   import * as wrapper from "solc/wrapper";
+   const ctx: Worker = self as any;
 
-	importScripts(
-		'https://solc-bin.ethereum.org/bin/soljson-v0.8.6+commit.11564f7e.js'
-	);
+   importScripts(
+   	"https://solc-bin.ethereum.org/bin/soljson-v0.8.6+commit.11564f7e.js"
+   );
 
-	ctx.addEventListener('message', ({ data }) => {
-		const solc = wrapper((ctx as any).Module);
-		const compileResult = solc.compile(
-			createCompileInput(data.contractFileName, data.content)
-		);
-		ctx.postMessage(compileResult);
-	});
+   ctx.addEventListener("message", ({ data }) => {
+   	const solc = wrapper((ctx as any).Module);
+   	const compileResult = solc.compile(
+   		createCompileInput(data.contractFileName, data.content)
+   	);
+   	ctx.postMessage(compileResult);
+   });
 
-	function createCompileInput(
-		fileName = 'storage.sol',
-		fileContent: string
-	): string {
-		const CompileInput = {
-			language: 'Solidity',
-			sources: {
-				[fileName]: {
-					content: fileContent,
-				},
-			},
-			settings: {
-				outputSelection: {
-					'*': {
-						'*': ['*'],
-					},
-				},
-			},
-		};
-		return JSON.stringify(CompileInput);
-	}
-	```
+   function createCompileInput(
+   	fileName = "storage.sol",
+   	fileContent: string
+   ): string {
+   	const CompileInput = {
+   		language: "Solidity",
+   		sources: {
+   			[fileName]: {
+   				content: fileContent,
+   			},
+   		},
+   		settings: {
+   			outputSelection: {
+   				"*": {
+   					"*": ["*"],
+   				},
+   			},
+   		},
+   	};
+   	return JSON.stringify(CompileInput);
+   }
+   ```
 
 1. Create a Promisify function to call `SolcJs.worker.ts` and wait until the compilation finished.
-	```ts
-	const compileWithWorker = async (data: any) => {
-			return new Promise((resolve, reject) => {
-				const worker = new Worker('../../SolcJs.worker.ts', {
-					type: 'module',
-				});
-				worker.postMessage(data);
-				worker.onmessage = function (event: any) {
-					resolve(event.data);
-				};
-				worker.onerror = reject;
-			});
-	};
-	```
-	Thank to this great [answer](https://stackoverflow.com/questions/41423905/wait-for-several-web-workers-to-finish) from [T.J. Crower](https://stackoverflow.com/users/157247/t-j-crowder)
+
+   ```ts
+   const compileWithWorker = async (data: any) => {
+   	return new Promise((resolve, reject) => {
+   		const worker = new Worker("../../SolcJs.worker.ts", {
+   			type: "module",
+   		});
+   		worker.postMessage(data);
+   		worker.onmessage = function (event: any) {
+   			resolve(event.data);
+   		};
+   		worker.onerror = reject;
+   	});
+   };
+   ```
+
+   Thank to this great [answer](https://stackoverflow.com/questions/41423905/wait-for-several-web-workers-to-finish) from [T.J. Crower](https://stackoverflow.com/users/157247/t-j-crowder)
 
 1. Now we are ready to use WebWorker to compile a Simple Solidity Smart Contract.
-	```ts
-	const handleCompile = async () => {
-			setCompiling(true);
-			const result = await compileWithWorker({
-				content: SimpleStorageContact,
-			});
-			setCompileResult(result as string);
-			setCompiling(false);
-	};
-	```
+   ```ts
+   const handleCompile = async () => {
+   	setCompiling(true);
+   	const result = await compileWithWorker({
+   		content: SimpleStorageContact,
+   	});
+   	setCompileResult(result as string);
+   	setCompiling(false);
+   };
+   ```
 
 SourceCode in Github - [nx-webworker-sample](https://github.com/vanduc1102/reactjs-practices/tree/main/projects/nx-webworker-sample)

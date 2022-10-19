@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Cannot find module spdx-license-ids from .../spdx-expression-parse/scan.js
-date:   2021-07-20 16:43:00 +0700
-categories: [ NodeJs]
-tags: [ NodeJs, Jest, SwaggerUI]
+date: 2021-07-20 16:43:00 +0700
+categories: [NodeJs]
+tags: [NodeJs, Jest, SwaggerUI]
 ---
 
 ## Error
@@ -28,13 +28,15 @@ Test server › should return OK on /health
       at Resolver.resolveModule (../../node_modules/jest-resolve/build/resolver.js:311:11)
       at Object.<anonymous> (../../node_modules/spdx-expression-parse/scan.js:4:11)
 ```
+
 ## How to fix
 
 Current `jest.config.json`
+
 ```js
 module.exports = {
-  //...rest
-  moduleFileExtensions: ['ts', 'js', 'html'],
+	//...rest
+	moduleFileExtensions: ["ts", "js", "html"],
 };
 ```
 
@@ -42,8 +44,8 @@ We will need to add `json`
 
 ```js
 module.exports = {
-  //...rest
-  moduleFileExtensions: ['ts', 'js', 'html', 'json'],
+	//...rest
+	moduleFileExtensions: ["ts", "js", "html", "json"],
 };
 ```
 

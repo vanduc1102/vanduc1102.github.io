@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Higher Order Function in Java
-date:   2022-10-07 06:14:27 +0700
+title: Higher Order Function in Java
+date: 2022-10-07 06:14:27 +0700
 categories: [java]
 tags: [java, core]
 ---

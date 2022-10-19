@@ -1,12 +1,13 @@
 ---
 layout: post
 title: CSS modules with CSS selectors
-date:   2021-06-15 16:43:00 +0700
+date: 2021-06-15 16:43:00 +0700
 categories: [reactjs]
 tags: [CSS, reactjs, CSSModules]
 ---
 
 # How to use CSS selectors in CSS Modules
+
 Because all classes will be hashed in CSS Modules, so you cant use class selector in your CSS
 
 But you can still use tags, roles, psudo
@@ -35,8 +36,8 @@ Here is an example of the uses:
 }
 
 ```
-This is an example of https://developer.wordpress.org/block-editor/reference-guides/components/tab-panel/#development-guidelines
 
+This is an example of https://developer.wordpress.org/block-editor/reference-guides/components/tab-panel/#development-guidelines
 
 ```
 import { TabPanel } from '@wordpress/components';

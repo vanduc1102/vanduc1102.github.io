@@ -1,0 +1,30 @@
+{
+  "name": "vanduc1102.github.io",
+  "version": "1.0.0",
+  "description": "personal blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format:write": "prettier -w .",
+    "format:check": "prettier -c .",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanduc1102/vanduc1102.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanduc1102/vanduc1102.github.io/issues"
+  },
+  "homepage": "https://github.com/vanduc1102/vanduc1102.github.io#readme",
+  "devDependencies": {
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^2.7.1"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  }
+}
