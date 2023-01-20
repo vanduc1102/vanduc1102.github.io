@@ -22,16 +22,22 @@ I have an AWS PostgreSQL instance, it is serving an small web app. I am creating
 template1=# CREATE USER tom WITH PASSWORD 'myPassword';
 ```
 
-- Add a database called `jerry`
+Tip: Generate password with `NodeJS` in terminal
 
 ```
-template1=# CREATE DATABASE jerry;
+node -e "console.log(crypto.randomBytes(16).toString('base64').replace(/\W/g, ''))"
+```
+
+- Add a database called `jerry_db`
+
+```
+template1=# CREATE DATABASE jerry_db;
 ```
 
 - Now grant all privileges on database
 
 ```
-template1=# GRANT ALL PRIVILEGES ON DATABASE jerry to tom;
+template1=# GRANT ALL PRIVILEGES ON DATABASE jerry_db to tom;
 ```
 
 - Type `\q` to quit:
@@ -65,3 +71,5 @@ CREATE ROLE "duke2" WITH
 1. [https://www.cyberciti.biz/faq/howto-add-postgresql-user-account/](https://www.cyberciti.biz/faq/howto-add-postgresql-user-account/)
 
 1. [https://www.postgresql.org/docs/current/sql-createrole.html](https://www.postgresql.org/docs/current/sql-createrole.html)
+
+1. [https://tableplus.com/blog/2018/04/postgresql-how-to-grant-access-to-users.html](https://tableplus.com/blog/2018/04/postgresql-how-to-grant-access-to-users.html)
