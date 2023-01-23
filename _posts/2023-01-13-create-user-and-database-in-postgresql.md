@@ -40,6 +40,18 @@ template1=# CREATE DATABASE jerry_db;
 template1=# GRANT ALL PRIVILEGES ON DATABASE jerry_db to tom;
 ```
 
+- If you want to disallow all role to create objects in `public` schema
+
+```
+REVOKE ALL ON schema public FROM public;
+```
+
+- Practically, you will have to grant all privileges of `public` schema to the new user.
+
+```
+GRANT ALL ON schema public TO tom;
+```
+
 - Type `\q` to quit:
 
 ```
@@ -73,3 +85,4 @@ CREATE ROLE "duke2" WITH
 1. [https://www.postgresql.org/docs/current/sql-createrole.html](https://www.postgresql.org/docs/current/sql-createrole.html)
 
 1. [https://tableplus.com/blog/2018/04/postgresql-how-to-grant-access-to-users.html](https://tableplus.com/blog/2018/04/postgresql-how-to-grant-access-to-users.html)
+1. [https://dba.stackexchange.com/a/35317/113250](https://dba.stackexchange.com/a/35317/113250)
