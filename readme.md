@@ -14,6 +14,18 @@ rbenv init
 
 Check which ruby you are using with `which ruby`
 
+Expected output:
+
+```
+/Users/$USER_NAME/.rbenv/shims/ruby
+```
+
+Else try this command if you are using ZSH:
+
+```
+eval "$(rbenv init - zsh)"
+```
+
 ## Run these commands to start development:
 
 ```
