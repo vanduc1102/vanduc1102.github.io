@@ -62,3 +62,4 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 node_modules/
 package-lock.json
+local-*
