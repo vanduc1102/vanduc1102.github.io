@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Deploy and Manage Cloud Environments with Google Cloud - Challenge Lab
+title: Deploy and Manage Cloud Environments with Google Cloud - Challenge Lab - 11552
 date: 2023-05-01 06:14:27 +0700
 categories: [cloud]
 tags: [lab, gcp]
