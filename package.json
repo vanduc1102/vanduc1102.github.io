@@ -20,9 +20,9 @@
   },
   "homepage": "https://github.com/vanduc1102/vanduc1102.github.io#readme",
   "devDependencies": {
-    "husky": ">=6",
-    "lint-staged": ">=10",
-    "prettier": "^2.7.1"
+    "husky": ">=8.0.3",
+    "lint-staged": ">=13.2.2",
+    "prettier": "^2.8.8"
   },
   "lint-staged": {
     "*.{js,css,md}": "prettier --write"
