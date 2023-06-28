@@ -27,12 +27,8 @@ description: Tất cả những link đăng ký ở dưới đều miễn phí, 
 	<p><a href="https://www.binance.com/en/register?ref=DNG0OYXS"> Link đăng ký</a></p>
 	<h4>Giảm 10% phí giao dịch với Huobi</h4>
 	<p><a href="https://www.huobi.com/en-us/topic/double-reward/?invite_code=a9y63223"> Link đăng ký</a></p>
-	<h4>Tạo tài khoản giao dịch trên sàn FTX</h4>
-	<p><a href="https://ftx.com/#a=34340991"> Link đăng ký</a></p>
 	<h4>Đăng ký tài khoản và sử dụng Etoro để nhận thưởng 50USD</h4>
 	<p><a href="https://etoro.tw/3froME0"> Link đăng ký</a></p>
-	<h4>Nhận ngay 20 ngàn, và hoàn tiền mỗi khi mua hàng online với Shopback</h4>
-	<p><a href="https://app.shopback.com/955UQLZmZhb"> Link đăng ký</a></p>
 	<h4>Đăng ký tài khoản và sử dụng ZaloPay nhận thưởng lên đến 1 triệu.</h4>
 	<p><a href="https://uudai.zalopay.vn/mapcardv5/web/buffer?utm_term=sharefacebook&fbclid=IwAR3hZ3YABb9kj0aIuM7_m1WHao6DWZbnvkLUxaOwYa0OaVBvlwCaaq97C1k&shareKey=0BevRReAK3wY8WUgUbyZyQ&navigate_to=referral_receiver"> Link đăng ký</a></p>
 	<h4>Đăng ký tài khoản và sử dụng MOMO nhận thưởng lên đến 600 ngàn.</h4>
