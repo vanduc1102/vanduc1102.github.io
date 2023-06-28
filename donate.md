@@ -10,9 +10,12 @@ description: Tất cả những link đăng ký ở dưới đều miễn phí, 
 <div class="container">
 	<h2>Bạn muốn gửi mình ly cà phê.</h2>
 	<hr />
-	<p><b>Số tài khoản:</b> 9704 2292 7319 4782</p>
-	<p><b>Ngân hàng:</b> NH Quân Đội - CN Điện Biên Phủ</p>
+	<p><b>Số tài khoản:</b> <b style="font-size:18pt;">034-642-530 </b></p>
+	<p><b>Ngân hàng:</b> VIB - Ngân hàng TMCP Quốc tế Việt Nam</p>
 	<p><b>Họ tên:</b> Nguyễn Văn Đức</p>
+	<p>
+	<image width="70%" src="/assets/bank-accounts/vn-napas-vib.png" alt="VIB 034642530 VNQR"></image>
+	</p>
 	<br />
 	<h2>Crypto Wallets</h2>
 	<hr />

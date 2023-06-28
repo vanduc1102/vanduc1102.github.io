@@ -4,6 +4,7 @@ _site
 .jekyll-metadata
 vendor
 
+.DS_Store
 *.gem
 *.rbc
 /.config
