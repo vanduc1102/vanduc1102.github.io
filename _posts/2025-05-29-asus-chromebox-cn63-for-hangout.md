@@ -22,17 +22,19 @@ ARC:
 Enterprise Enrolled: false
 Developer Mode: false
 ```
+
 ## Hardware specification
 
-ASUS Chromebox 2 (CN62) for meetings G015U 
-- USFF 
-- 1 x Core i7 5500U / 2.4 GHz 
-- RAM 4 GB 
-- SSD 16 GB 
-- HD Graphics 5500 
+ASUS Chromebox 2 (CN62) for meetings G015U
+
+- USFF
+- 1 x Core i7 5500U / 2.4 GHz
+- RAM 4 GB
+- SSD 16 GB
+- HD Graphics 5500
 - GigE
-- WLAN: Bluetooth 4.0, 802.11b/g/n/ac 
-- Chrome OS 
+- WLAN: Bluetooth 4.0, 802.11b/g/n/ac
+- Chrome OS
 - monitor: none
 
 ## Things work
