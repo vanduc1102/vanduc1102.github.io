@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Upgrading Asus Chromebox CN62 GUADO for Meet version
-date: 2025-04-30 06:14:27 +0700
+date: 2025-04-29 06:14:27 +0700
 categories: [computer]
 tags: [minpc, os]
 ---
