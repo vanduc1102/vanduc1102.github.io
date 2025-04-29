@@ -47,11 +47,11 @@ ASUS Chromebox 2 (CN62) for meetings G015U
 
 - Many tutorials say at the recovery screen, hit `Ctrl+D` to enter the `Dev Mode`, But it does not work for me. Tried so many times.
 
-- I will try another ways, if I can get into the `Dev Mode`, I will install new firmware from https://docs.mrchromebox.tech/, then Windows 11
+- I will try another ways, if I can get into the `Dev Mode`, I will install new firmware from [MrChromebox](https://docs.mrchromebox.tech/), then Windows 11
 
 ## References
 
-- https://docs.mrchromebox.tech/
-- https://www.reddit.com/r/chromeos/comments/tw4p6f/cn62_asus_chrombox_out_of_date/
-- https://stackoverflow.com/questions/25980648/how-do-you-enter-developer-mode-on-the-asus-chromebox
-- https://www.chromium.org/chromium-os/developer-library/reference/development/developer-information-for-chrome-os-devices/generic/
+- [MrChromebox Documentation](https://docs.mrchromebox.tech/)
+- [Reddit - CN62 Asus Chrombox out of date](https://www.reddit.com/r/chromeos/comments/tw4p6f/cn62_asus_chrombox_out_of_date/)
+- [Stack Overflow - How to enter developer mode on Asus Chromebox](https://stackoverflow.com/questions/25980648/how-do-you-enter-developer-mode-on-the-asus-chromebox)
+- [Chromium OS Developer Information](https://www.chromium.org/chromium-os/developer-library/reference/development/developer-information-for-chrome-os-devices/generic/)
