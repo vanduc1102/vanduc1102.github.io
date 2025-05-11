@@ -49,6 +49,17 @@ ASUS Chromebox 2 (CN62) for meetings G015U
 
 - I will try another ways, if I can get into the `Dev Mode`, I will install new firmware from [MrChromebox](https://docs.mrchromebox.tech/), then Windows 11
 
+## Update 2025-05-12
+
+- `Ctrl+D` works on Logitech keyboard, I failed many times with a mechanic keyboard.
+- Before enter DevMode, you are better to PowerWash the Chrombox.
+- Upgraded to 16GB RAM DDR3 PCL (1.35v) , SSD 256GB
+- I've installed dual boot for Windows 10 and Fedora 42
+- To install Windows, You will have to create bootale USB from Windows, Download the Windows images from official page, and use Rufus to create the bootable USB. I failed many times with bootable USB created from Linux and Mac.
+- I installed Windows 11 successfully on original 4GB RAM, but when I replaced to 16GB RAM, the installation keep failing. I have to install Windows 10 ( less picky).
+- The Hangout Remote works on Windows and Linux, You can repair by holding both `Menu + Mute` buttons at the same time for 4-6 seconds.
+- Huge thanks to MrChromebox, you are helping to save environments.
+
 ## References
 
 - [MrChromebox Documentation](https://docs.mrchromebox.tech/)
