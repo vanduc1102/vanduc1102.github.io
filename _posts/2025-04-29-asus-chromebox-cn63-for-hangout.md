@@ -60,6 +60,10 @@ ASUS Chromebox 2 (CN62) for meetings G015U
 - The Hangout Remote works on Windows and Linux, You can repair by holding both `Menu + Mute` buttons at the same time for 4-6 seconds.
 - Huge thanks to MrChromebox, you are helping to save environments.
 
+## Update 2025-05-16
+
+- Fixed broken CPU cooling fan, the fan is compatible with NUC NUC5i7RYH NUC6i3SYH NUC6i3SYK NUC6i5SYH NUC6i5SYK NUC7i3BNH , I bought one on shopee.vn
+
 ## References
 
 - [MrChromebox Documentation](https://docs.mrchromebox.tech/)
