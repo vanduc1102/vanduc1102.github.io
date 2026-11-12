@@ -6,47 +6,47 @@ categories: [database, postgresql]
 tags: [database, postgresql]
 ---
 
-I have an AWS PostgreSQL instance, it is serving an small web app. I am creating a new application and want to use the same instance to save cost. I could share the same username and password to the new application. But I want to apply some certain security to the PostgreSQL instance, so I decided to create a new user and assign the user to a new database. Here are the 2 methods I tried:
+I have an AWS PostgreSQL instance serving a small web app. When building a new application, I wanted to reuse the existing instance to reduce costs. While I could share the same credentials across both applications, I decided to isolate them for security by creating a dedicated user and database. Here are the 2 methods I used:
 
-## 1. Using terminal
+## 1. Using Terminal
 
-- Connect to database `template1`
+- Connect to database `template1`:
 
 ```
 # psql -d template1 -U postgres
 ```
 
-- Add a user called `tom`
+- Add a user called `tom`:
 
 ```
 template1=# CREATE USER tom WITH PASSWORD 'myPassword';
 ```
 
-Tip: Generate password with `NodeJS` in terminal
+Tip: Generate a random password with Node.js in the terminal:
 
 ```
 node -e "console.log(crypto.randomBytes(16).toString('base64').replace(/\W/g, ''))"
 ```
 
-- Add a database called `jerry_db`
+- Add a database called `jerry_db`:
 
 ```
 template1=# CREATE DATABASE jerry_db;
 ```
 
-- Now grant all privileges on database
+- Now grant all privileges on the database:
 
 ```
 template1=# GRANT ALL PRIVILEGES ON DATABASE jerry_db to tom;
 ```
 
-- If you want to disallow all role to create objects in `public` schema
+- To prevent other roles from creating objects in the `public` schema:
 
 ```
 REVOKE ALL ON schema public FROM public;
 ```
 
-- Practically, you will have to grant all privileges of `public` schema to the new user.
+- In practice, you will need to grant all privileges on the `public` schema to the new user:
 
 ```
 GRANT ALL ON schema public TO tom;
@@ -60,7 +60,7 @@ template1=# \q
 
 ## 2. Using DBeaver GUI
 
-- Create a new role with `Is User` with `Inherit` and `Can Login`
+- Create a new role with `Is User`, `Inherit`, and `Can Login`:
 
 ```
 CREATE ROLE "duke2" WITH
@@ -74,7 +74,7 @@ CREATE ROLE "duke2" WITH
 	CONNECTION LIMIT -1;
 ```
 
-- Create a new db, set its owner as the new user.
+- Create a new database and set its owner to the new user.
 
 ![create-db-gui](/assets/2023-01/create-db.png)
 

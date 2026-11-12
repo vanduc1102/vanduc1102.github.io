@@ -6,9 +6,9 @@ categories: [java]
 tags: [java, core]
 ---
 
-My friend just sent me a pice of code, and asked me to improve it. So it was more than 3K lines of code file. Most of the code ares duplicated.
+A friend recently sent me a piece of code and asked me to help improve it. The file had more than 3,000 lines, and most of the logic was heavily duplicated.
 
-I had found an pattern in the code:
+I noticed a recurring pattern throughout the code:
 
 ```java
 
@@ -22,17 +22,17 @@ testA() {
 		}
 
 		Response response = request.getA();
-		// lot of parsing response
-		// lot of log and assertion base on response
+		// lots of response parsing
+		// lots of logs and assertions based on response
 	}
 
 }
 
 ```
 
-So I thought of a solution to reduce the number line of code. What if we can use a Higher Order Function, so we can share the part of `trying with while`.
+To reduce lines of code and avoid repetition, I refactored the logic using a Higher-Order Function to encapsulate the repetitive `while` retry loop.
 
-Here is my solution
+Here is my solution:
 
 ```java
 package com.pragmatists.blog.events.application;

@@ -6,15 +6,15 @@ categories: [java]
 tags: [problem, challenge]
 ---
 
-This is the challenge that I failed recently, I was so dump.
+This is a challenge I failed during a recent technical interview.
 
 ## Problem
 
-Write a solution for a store to give change back in the most efficient way. Assuming you have `$10, $5, $2 and $1 coins` and that the most optimal way to give change back is by always giving the **LEAST** amount of coins possible, how would you calculate which coins to give me back?
+Write a solution for a store to give change back in the most efficient way. Assuming you have `$10, $5, $2 and $1 coins` and that the most optimal way to give change back is by always giving the **LEAST** number of coins possible, how would you calculate which coins to return?
 
-- **Input**: (can be hardcoded) will be the amount of coins available for each denomination( for eg. 5 coins of each) and the amount of money you have to give me back.
+- **Input**: The amount of coins available for each denomination (e.g., 5 coins of each) and the total change amount to return.
 
-- **Output**: how many coins of each denomination you will give me back ( for eg. 1 of $3, 3 of $5...)
+- **Output**: How many coins of each denomination to return (e.g., 1 of $2, 3 of $5...).
 
 ## First attempt
 

@@ -14,7 +14,7 @@ Deploy and Manage Cloud Environments with Google Cloud: Challenge Lab - 11552
 
 - In the Google Cloud Console, on the Navigation menu (Navigation menu icon), click Compute Engine > VM instances.
 
-- In the entry for `postgresql-vm`, under Connect click SSH. If prompted, click Connect. In the terminal in the new browser window, install the `pglogical` database extension:
+- In the entry for `postgresql-vm`, under Connect, click SSH. If prompted, click Connect. In the terminal in the new browser window, install the `pglogical` database extension:
 
 ```
 sudo apt install postgresql-13-pglogical
@@ -46,7 +46,7 @@ CREATE EXTENSION pglogical;
 CREATE EXTENSION pglogical;
 ```
 
-- Create the database migration user, you will create a dedicated user for managing database migration.
+- Create a dedicated database migration user:
 
 - In `psql`, enter the commands below to create a new user with the replication role:
 
@@ -59,7 +59,7 @@ ALTER ROLE import_admin WITH REPLICATION;
 
 ### Assign permissions to the migration user
 
-- In this step you will assign the necessary permissions to the `import_admin` user to enable **Database Migration Service** to migrate your database.
+- In this step, you will assign the necessary permissions to the `import_admin` user to enable **Database Migration Service** to migrate your database:
 
 - In `psql`, grant permissions to the `pglogical` schema and tables for the `postgres` database.
 
@@ -114,9 +114,9 @@ GRANT SELECT ON public.products TO import_admin;
 GRANT SELECT ON public.users TO import_admin;
 ```
 
-- Make the `import_admin` user the owner of the tables in the `orders` database, so that you can edit the source data later, when you test the migration.
+- Transfer table ownership in the `orders` database to `import_admin` so you can edit the source data during migration testing:
 
-- In psql, run the following commands:
+- In `psql`, run the following commands:
 
 ```
 \c orders;
@@ -129,7 +129,7 @@ ALTER TABLE public.users OWNER TO import_admin;
 \dt
 ```
 
-- The **Database Migration Service** requires all tables to be migrated to have a primary key. Once you have granted the user the required privileges, run the following to add a primary key to the `inventory_items` table and exit `psql`.
+- The **Database Migration Service** requires all tables to be migrated to have a primary key. Once you have granted the user the required privileges, run the following to add a primary key to the `inventory_items` table and exit `psql`:
 
 ```
 \c orders;
@@ -148,13 +148,13 @@ ALTER TABLE public.inventory_items ADD PRIMARY KEY(id);
 gcloud iam roles list | grep "name:"
 ```
 
-- Assigning Role to a User or a Service Account:
+- Assign a role to a user or service account:
 
 ```
 gcloud projects add-iam-policy-binding PROJECT_ID_REPLACE_ME --member user:USER_ID_REPLACE_ME --role=roles/viewer
 ```
 
-`USER_ID` is in email format
+Note: `USER_ID` must be in email format.
 
 Reference: https://cloud.google.com/sdk/gcloud/reference/projects/add-iam-policy-binding
 
@@ -212,10 +212,10 @@ Reference: https://cloud.google.com/sdk/gcloud/reference/compute/firewall-rules/
 gcloud iam roles list | grep "name:"
 ```
 
-- Assigning Role to a **User** or a **Service Account**:
+- Assign a role to a **User** or **Service Account**:
 
 ```
 gcloud projects add-iam-policy-binding PROJECT_ID_REPLACE_ME --member user:USER_ID_REPLACE_ME --role=roles/viewer
 ```
 
-`USER_ID` is in email format
+Note: `USER_ID` must be in email format.

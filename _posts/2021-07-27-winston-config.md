@@ -8,7 +8,7 @@ tags: [nodejs, typescript]
 
 ## Configuration
 
-Here is my Winston@3 configuration that I am using in my current project
+Here is the Winston 3 configuration I use in my current project:
 
 ```ts
 import winston from "winston";
@@ -56,11 +56,11 @@ export const Logger = (namespace?: string) => {
 };
 ```
 
-This setup will produce log messages in `text format` for local development and `json format` for production setup with exception trace.
+This setup produces log messages in readable text format for local development and JSON format for production environments, complete with exception stack traces.
 
-## How to use
+## How to Use
 
-in `server.ts`
+In `server.ts`:
 
 ```ts
 import Koa from "koa";
@@ -80,7 +80,7 @@ const server = (app: Koa) => {
 server(createApp());
 ```
 
-in `product.service.ts`
+In `product.service.ts`:
 
 ```ts
 const LOGGER = Logger("productService");

@@ -6,13 +6,15 @@ categories: [reactjs]
 tags: [reactjs, antd]
 ---
 
-I have encountered an issue in my current project, I am using [blitzjs](https://blitzjs.com/), which is a full stack approach on top of [nextjs](https://nextjs.org/docs/api-reference/next/link), and [Ant.design](https://ant.design/components/button) as UI framework.
+I encountered an issue in a project using [Blitz.js](https://blitzjs.com/) (built on top of [Next.js](https://nextjs.org/docs/api-reference/next/link)) and [Ant Design](https://ant.design/components/button) as the UI framework.
 
-I have a WARNING in console:
+I noticed the following warning in the browser console:
 
-onMouseEnter" was passed to <Link> with `href` of `[object Object]` but "legacyBehavior" was set. The legacy behavior requires onMouseEnter be set on the child of next/link
+```
+onMouseEnter was passed to <Link> with href of [object Object] but "legacyBehavior" was set. The legacy behavior requires onMouseEnter be set on the child of next/link
+```
 
-## 1. Code have issue
+## 1. Problematic Code
 
 ```tsx
 <Tooltip title="for dummies">
@@ -24,7 +26,7 @@ onMouseEnter" was passed to <Link> with `href` of `[object Object]` but "legacyB
 
 ## 2. Solution
 
-- Create a new component for next/link and antd button
+- Create a wrapper component integrating `next/link` with Ant Design's `Button`:
 
 ```tsx
 import React from "react";
@@ -46,7 +48,7 @@ const AntdButtonNextLink = React.forwardRef(
 );
 ```
 
-- Fix the issue by using the new component
+- Fix the issue by using the new component:
 
 ```tsx
 <Tooltip title="for dummies">

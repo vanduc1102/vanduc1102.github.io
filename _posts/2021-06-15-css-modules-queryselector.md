@@ -8,11 +8,11 @@ tags: [CSS, reactjs, CSSModules]
 
 # How to use CSS selectors in CSS Modules
 
-Because all classes will be hashed in CSS Modules, so you cant use class selector in your CSS
+Because all class names are hashed in CSS Modules, you cannot directly target child elements with arbitrary class selectors in your stylesheet.
 
-But you can still use tags, roles, psudo
+However, you can still target elements using element tags, attributes/roles, and pseudo-classes.
 
-Here is an example of the uses:
+Here is an example:
 
 ```
 .Tab {

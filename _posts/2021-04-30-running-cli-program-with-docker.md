@@ -8,10 +8,10 @@ tags: [Docker, PHP]
 
 # Running CLI program with Docker
 
-Recently, I have a change to work with Wordpress Plugin and I have to make it support [i18n](https://developer.wordpress.org/apis/handbook/internationalization/localization/#generate-mo-file).
-I do not have [wp-cli](https://wp-cli.org/) and i do not want to install it, as I am working for a consultant company, My stack has to change quite often from Java to NodeJs, and PHP.
+Recently, I had a chance to work with a WordPress plugin and needed to add support for [i18n](https://developer.wordpress.org/apis/handbook/internationalization/localization/#generate-mo-file).
+I didn't have [wp-cli](https://wp-cli.org/) installed and preferred not to install it globally. Since I work at a consulting company, my tech stack changes frequently between Java, Node.js, and PHP.
 
-My coworker showed me that I can run CLI program with an Docker image and [docker run](https://docs.docker.com/engine/reference/commandline/run/) command.
+A coworker showed me that I can run CLI programs directly using Docker images and the [docker run](https://docs.docker.com/engine/reference/commandline/run/) command.
 
 Example:
 
@@ -19,17 +19,17 @@ Example:
 docker run -it --rm -v "$(pwd)":/var/www/html wordpress:cli i18n make-pot . languages/my-plugin.pot --debug
 ```
 
-In order to make the [make-pot](https://developer.wordpress.org/cli/commands/i18n/make-pot/) command work, we have to change location to the root folder of `my-plugin`
+In order to make the [make-pot](https://developer.wordpress.org/cli/commands/i18n/make-pot/) command work, navigate to the root folder of `my-plugin`.
 
 ## Explanation
 
-- `-it`: Combination of `-i` and `-t`.
-- `--rm`: Automatically remove the container when it exits.
-- `-v "$(pwd)":/var/www/html`: On docker run, it runs inside an isolated container from our host, so we need to mount the current folder into the docker container, when the command completed, we will have result in our current directory. If we don't mount, docker will run the command and keep the result in side a auto generated container and we won't received anything.
-- `wordpress:cli` : is the docker image, we can search for a lot of images in [DockerHub](https://hub.docker.com/).
-- `make-pot . languages/my-plugin.pot`: it's the command will run inside container, the paths `. languages/my-plugin.pot` are inside container.
-- `--debug`: to debug the process to generate POT file.
+- `-it`: Combination of `-i` (interactive) and `-t` (pseudo-TTY).
+- `--rm`: Automatically removes the container when it exits.
+- `-v "$(pwd)":/var/www/html`: Because the command runs inside an isolated container, we mount our current host directory into the container. When the command completes, the generated output appears directly in our local folder. Without this volume mount, Docker would keep the output inside the container filesystem and we wouldn't receive the files.
+- `wordpress:cli`: The Docker image used to run the CLI tools (available on [Docker Hub](https://hub.docker.com/)).
+- `make-pot . languages/my-plugin.pot`: The command executed inside the container; the paths `. languages/my-plugin.pot` are evaluated relative to `/var/www/html`.
+- `--debug`: Enables debug logging during POT file generation.
 
 ## Tips
 
-- When mapping a directory to a container, you should check the `WORKDIR` of the image. E.g: the [wp-cli image](https://github.com/docker-library/wordpress/blob/master/cli/php7.3/alpine/Dockerfile) has `WORKDIR` at `/var/www/html` , also you can change the `workdir` in docker run command with `-w`
+- When mapping a directory to a container, check the `WORKDIR` of the image. For example, the [wp-cli image](https://github.com/docker-library/wordpress/blob/master/cli/php7.3/alpine/Dockerfile) sets `WORKDIR` to `/var/www/html`. You can also override the working directory with the `-w` flag in `docker run`.

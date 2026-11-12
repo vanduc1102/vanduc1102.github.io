@@ -6,15 +6,15 @@ categories: [react]
 tags: [reactjs, typescript, webpack, web3]
 ---
 
-I am building ConKetKemon game, it is a demo of building a game on blockchain.
+I built the ConKetKemon game as a demonstration of developing a game on the blockchain.
 
-My project uses web3 lib:
+The project uses the following Web3 libraries:
 
 `yarn add web3 @web3-react/core @web3-react/injected-connector`
 
-Since Webpack@5 released, they removed NodeJS Polyfill
+Starting with Webpack 5, built-in Node.js polyfills were removed.
 
-Here is how to fix the issue:
+Here is how to resolve the resulting polyfill issues:
 
 `webpack.config.js`
 
@@ -41,17 +41,17 @@ module.exports = (config, context) => {
 };
 ```
 
-Noticed I am using [NX@13](https://nx.dev/) for creating the workspace
+Note that I am using [NX@13](https://nx.dev/) to manage the workspace.
 
-And we need to install `stream-http`
+We also need to install `stream-http`:
 
 `yarn add stream-http -D`
 
-In order to use the `webpack.config.js`, we have to change the default of NX setup to
+In order to use this custom `webpack.config.js`, update the NX configuration in `workspace.json`:
 
 ```
 -	"webpackConfig": "@nrwl/react/plugins/webpack"
 +	"webpackConfig": "apps/frontend/webpack.config.js"
 ```
 
-Repository on github: <https://github.com/coinconket/conketkemon>
+Repository on GitHub: <https://github.com/coinconket/conketkemon>

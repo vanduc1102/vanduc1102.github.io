@@ -3,24 +3,41 @@ layout: post
 title: "Turn Any Old Device into a Home NAS: Old PCs, TV Boxes, and Phones (SATA Storage, SGID, Transmission, Samba, FTP & nftables)"
 date: 2026-11-12 11:38:00 +0700
 categories: [linux, homelab]
-tags: [nas, storage, homelab, transmission, samba, ftp, nftables, avahi, mdns, armbian, termux, linux, ubuntu, debian]
+tags:
+  [
+    nas,
+    storage,
+    homelab,
+    transmission,
+    samba,
+    ftp,
+    nftables,
+    avahi,
+    mdns,
+    armbian,
+    termux,
+    linux,
+    ubuntu,
+    debian,
+  ]
 ---
 
 You don't need expensive dedicated NAS hardware to run a silent, reliable 24/7 home storage server. Retired tech sitting forgotten in your drawers—**an old PC, a discarded Android TV Box, or even an old smartphone**—can easily become a capable home NAS with headless torrent downloading and high-speed local file sharing.
 
 ### Choosing Your Hardware: PC vs. TV Box vs. Phone
 
-| Device Type | Typical OS / Setup | Power Draw | Notable Advantages | Key Considerations |
-| :--- | :--- | :--- | :--- | :--- |
-| **Old PC / Laptop / Mini PC** | Ubuntu Server / Debian (`x86_64`) | 15W – 45W | Full SATA ports, Gigabit LAN, high CPU power | Higher power consumption; bulkier |
-| **Old Android TV Box** *(Amlogic S905/S912, Rockchip)* | **Armbian** (Debian/Ubuntu for ARM) | 2W – 5W | Ultra-low power, silent fanless cooling, extremely cheap | Usually USB 2.0 or 3.0 ports; 100M/1G Ethernet |
-| **Old Android Phone / Tablet** | **Termux** (`proot-distro`) or **postmarketOS** | 2W – 4W | **Built-in battery acts as a free UPS** against power cuts; built-in Wi-Fi & screen | Single USB port (requires powered USB-C OTG hub) |
+| Device Type                                            | Typical OS / Setup                              | Power Draw | Notable Advantages                                                                  | Key Considerations                               |
+| :----------------------------------------------------- | :---------------------------------------------- | :--------- | :---------------------------------------------------------------------------------- | :----------------------------------------------- |
+| **Old PC / Laptop / Mini PC**                          | Ubuntu Server / Debian (`x86_64`)               | 15W – 45W  | Full SATA ports, Gigabit LAN, high CPU power                                        | Higher power consumption; bulkier                |
+| **Old Android TV Box** _(Amlogic S905/S912, Rockchip)_ | **Armbian** (Debian/Ubuntu for ARM)             | 2W – 5W    | Ultra-low power, silent fanless cooling, extremely cheap                            | Usually USB 2.0 or 3.0 ports; 100M/1G Ethernet   |
+| **Old Android Phone / Tablet**                         | **Termux** (`proot-distro`) or **postmarketOS** | 2W – 4W    | **Built-in battery acts as a free UPS** against power cuts; built-in Wi-Fi & screen | Single USB port (requires powered USB-C OTG hub) |
 
 Because Debian/Ubuntu bases (and Armbian/Termux-PRoot) share the exact same underlying Linux ecosystem, **the setup steps, permissions model, and configuration files in this guide are identical across all three platforms**.
 
 ---
 
 ## What We'll Build:
+
 1. **Storage Setup**: Connecting SATA drives, 2.5" vs. 3.5" power requirements, TV box/phone brownout prevention, and auto-mounting.
 2. **Server Hostname with `.local` Postfix**: Zero-configuration local network addressing (`nas.local`) via mDNS / Avahi.
 3. Setting up a shared directory hierarchy with **group inheritance (SGID & ACLs)** so all future files and subfolders remain writable by your shared user group.
@@ -41,11 +58,11 @@ When connecting extra storage to an old PC, TV box, or smartphone, you typically
 
 One of the most common pitfalls when setting up DIY NAS storage with an external adapter is drive detection failure or unexpected reboots caused by **insufficient power**.
 
-| Form Factor & Drive Type | Voltage Needed | Bus-Powered (USB Alone)? | External Power Source Needed? |
-| :--- | :--- | :--- | :--- |
-| **2.5-inch SATA SSD** | 5V DC (~0.5A - 1A) | **Yes** (on PCs with USB 3.0 delivering 5V @ 0.9A) | No (unless on low-power TV box/phone) |
-| **2.5-inch Laptop HDD** | 5V DC (~1A) | **Yes** (on PCs with USB 3.0) | Recommended on TV box/phone |
-| **3.5-inch Desktop HDD** | **5V DC + 12V DC** | **NO** (Standard USB only outputs 5V) | **YES: 12V DC Adapter strictly required** |
+| Form Factor & Drive Type | Voltage Needed     | Bus-Powered (USB Alone)?                           | External Power Source Needed?             |
+| :----------------------- | :----------------- | :------------------------------------------------- | :---------------------------------------- |
+| **2.5-inch SATA SSD**    | 5V DC (~0.5A - 1A) | **Yes** (on PCs with USB 3.0 delivering 5V @ 0.9A) | No (unless on low-power TV box/phone)     |
+| **2.5-inch Laptop HDD**  | 5V DC (~1A)        | **Yes** (on PCs with USB 3.0)                      | Recommended on TV box/phone               |
+| **3.5-inch Desktop HDD** | **5V DC + 12V DC** | **NO** (Standard USB only outputs 5V)              | **YES: 12V DC Adapter strictly required** |
 
 #### Why You Must Provide External Power for 3.5" Drives
 
@@ -60,6 +77,7 @@ One of the most common pitfalls when setting up DIY NAS storage with an external
 #### Special Warning for Android TV Boxes & Smartphones: Brownout Prevention
 
 If you are using an **old TV Box** or an **old phone/tablet**:
+
 - **Do not rely on the device's USB port to power any mechanical hard drive.** The 5V bus power output on TV boxes and phones is designed for low-drain peripherals (flash drives, keyboards).
 - When a mechanical hard drive (even a 2.5" laptop drive) spins up, its initial **inrush current** often exceeds 1.5A to 2A for a split second.
 - On a phone or TV box, this current spike causes a **voltage brownout**, instantly crashing and rebooting the device!
@@ -92,6 +110,7 @@ sudo fdisk /dev/sdb
 ```
 
 Inside `fdisk`:
+
 - Type `g` to create a new GPT partition table.
 - Type `n` to create a new partition (accept defaults for full capacity).
 - Type `w` to write changes and exit.
@@ -103,6 +122,7 @@ sudo mkfs.ext4 -L "NAS_DATA" /dev/sdb1
 ```
 
 > **Tip:** By default, `ext4` reserves 5% of space for root. On large multi-terabyte drives, that can waste tens of gigabytes. Reduce it to 1% with:
+>
 > ```shell
 > sudo tune2fs -m 1 /dev/sdb1
 > ```
@@ -163,7 +183,7 @@ Set a clean, memorable hostname on your device (for example, `nas`):
 sudo hostnamectl set-hostname nas
 ```
 
-*(On minimalist systems or Termux where `hostnamectl` is not available, write directly to `/etc/hostname`: `echo "nas" | sudo tee /etc/hostname`).*
+_(On minimalist systems or Termux where `hostnamectl` is not available, write directly to `/etc/hostname`: `echo "nas" | sudo tee /etc/hostname`)._
 
 Next, update `/etc/hosts` to ensure local system utilities resolve the new name without delays:
 
@@ -211,6 +231,7 @@ ping nas.local
 ```
 
 Now, wherever an IP address was previously required, you can use `nas.local`:
+
 - **SSH Access:** `ssh youruser@nas.local`
 - **Transmission Web UI:** `http://nas.local:9091`
 - **Samba File Shares:** `\\nas.local\NAS` (Windows) or `smb://nas.local/NAS` (macOS/Linux)
@@ -233,7 +254,7 @@ sudo groupadd nas-users
 sudo usermod -aG nas-users $USER
 ```
 
-*(Log out and log back in, or run `newgrp nas-users` so your session recognizes the new group).*
+_(Log out and log back in, or run `newgrp nas-users` so your session recognizes the new group)._
 
 ### Step 3.2: Establish the Directory Layout
 
@@ -266,11 +287,12 @@ sudo find /srv/nas -type f -exec chmod 0664 {} +
 ```
 
 #### Why SGID (`chmod g+s` / `2775`)?
+
 Normally, when a user creates a new file or subfolder, it inherits that user's primary group. With the **SGID bit** set on a parent directory, **any newly created subfolder or file automatically inherits the parent folder's group (`nas-users`)**, ensuring multi-user and daemon collaboration.
 
 ### Step 3.4: Guarantee Write Access with Default POSIX ACLs
 
-While SGID ensures the *group name* is inherited, default file creation masks (umask) could still omit group write permissions. To ensure every future file and folder is always group-writable:
+While SGID ensures the _group name_ is inherited, default file creation masks (umask) could still omit group write permissions. To ensure every future file and folder is always group-writable:
 
 ```shell
 sudo apt install -y acl
@@ -307,12 +329,12 @@ sudo systemctl stop transmission-daemon
 
 The system username under which `transmission-daemon` runs **differs depending on your Linux distribution**:
 
-| Linux Distribution | Default User Name |
-| :--- | :--- |
+| Linux Distribution                                 | Default User Name     |
+| :------------------------------------------------- | :-------------------- |
 | **Debian / Ubuntu / Raspberry Pi OS / Linux Mint** | `debian-transmission` |
-| **Arch Linux / Manjaro** | `transmission` |
-| **Fedora / RHEL / Rocky Linux / AlmaLinux** | `transmission` |
-| **Alpine Linux / openSUSE** | `transmission` |
+| **Arch Linux / Manjaro**                           | `transmission`        |
+| **Fedora / RHEL / Rocky Linux / AlmaLinux**        | `transmission`        |
+| **Alpine Linux / openSUSE**                        | `transmission`        |
 
 If you are unsure of your distribution's exact username, you can discover it dynamically using any of the following commands:
 
@@ -375,6 +397,7 @@ Update the following key settings:
 ```
 
 Key options explained:
+
 - `"umask": 2`: Sets the decimal mask `2` (octal `002`). New files will be created with `664` (`rw-rw-r--`) and folders with `775` (`rwxrwxr-x`), allowing other members of `nas-users` to move or delete downloads.
 - `"rpc-whitelist-enabled": false`: Allows connections from any IP on your local subnet (or you can set `"rpc-whitelist": "127.0.0.1,192.168.*.*"`).
 - `"rpc-password"`: Enter your password in plaintext. Transmission will automatically hash it with SHA-1 when the daemon restarts.
@@ -458,6 +481,7 @@ Scroll to the bottom of the file and append our `[NAS]` share definition:
 ```
 
 Why these parameters match our setup perfectly:
+
 - `valid users = @nas-users`: Only system users who belong to the `nas-users` group are allowed to authenticate and access the share.
 - `force group = nas-users`: Enforces group ownership on any newly uploaded file or directory.
 - `create mask = 0664` & `directory mask = 2775`: Guarantees new files and folders retain group write permissions and the SGID bit.
@@ -491,6 +515,7 @@ sudo systemctl enable smbd nmbd
 ### Step 5.5: Connecting to the Share
 
 Thanks to our `.local` hostname from Section 2, connecting is simpler than ever:
+
 - **Windows:** Open File Explorer or press `Win + R`, then enter `\\nas.local\NAS` (or `\\<NAS_IP>\NAS`). Log in using your username and the password created with `smbpasswd`.
 - **macOS:** In Finder, press `Cmd + K`, enter `smb://nas.local/NAS`, and click **Connect**.
 - **Linux:** Open your file manager (Nautilus, Dolphin) and navigate to `smb://nas.local/NAS`.
@@ -546,6 +571,7 @@ pasv_max_port=40100
 ```
 
 Key points:
+
 - `local_umask=002`: This matches Transmission's umask! Any file uploaded through FTP will be created with `664` permissions (`rw-rw-r--`), so Transmission and Samba users can edit or delete them.
 - `local_root=/srv/nas`: Drops FTP users directly into the NAS storage root.
 - `pasv_min_port=40000` & `pasv_max_port=40100`: Limits passive port range, making firewall rules simple and predictable.
@@ -575,6 +601,7 @@ You can now connect via any FTP client (like **FileZilla**, **Cyberduck**, or th
 ## 7. Firewall Configuration with nftables (`nft`)
 
 Modern Linux distributions (Debian 10+, Ubuntu 20.04+, and newer) use **nftables** as the default kernel packet filtering framework. Compared to legacy `iptables` and high-level wrappers like `ufw`, `nftables` features:
+
 - A clean, unified syntax for both IPv4 and IPv6 (`inet` family).
 - Atomic ruleset commits (no half-applied rule states).
 - Native support for sets, ranges, and dictionary lookups, minimizing CPU overhead.
@@ -668,6 +695,7 @@ table inet filter {
 ```
 
 #### Why this configuration is secure:
+
 - **Default Drop Policy:** Inbound connections are dropped unless explicitly permitted.
 - **LAN Isolation:** Sensitive management endpoints (Transmission Web UI, Samba shares, and FTP) are only accessible from private IP addresses (`$LAN_V4`).
 - **Zero-Config Resolution:** Opening UDP port `5353` allows `avahi-daemon` to answer mDNS queries so `nas.local` remains discoverable across your entire network.
@@ -722,16 +750,19 @@ sudo nft flush ruleset
 The real test of a unified NAS setup is confirming that **every service respects the `nas-users` group and SGID inheritance**.
 
 ### Test 1: Transmission Web Interface
+
 Open your browser from another computer on the same network:
 
 ```
 http://nas.local:9091
 ```
-*(or `http://<NAS_IP_ADDRESS>:9091`)*
+
+_(or `http://<NAS_IP_ADDRESS>:9091`)_
 
 Log in with your username (`admin`) and the password you set in `settings.json`.
 
 ### Test 2: File Creation Across Services
+
 Let's test file creation across our three services:
 
 1. **Transmission:** Creates a download file.
@@ -752,12 +783,14 @@ ls -l /srv/nas/documents/user_file.txt
 ```
 
 Expected output:
+
 ```shell
 -rw-rw-r-- 1 debian-transmission nas-users 0 Nov 12 11:38 transmission_file.txt
 -rw-rw-r-- 1 youruser            nas-users 0 Nov 12 11:38 user_file.txt
 ```
 
 Notice:
+
 - Both files belong to the **`nas-users`** group automatically.
 - Both files have **`rw-rw-r--`** permissions.
 - Any user in `nas-users` can modify, move, or delete files created by any other service!
@@ -769,7 +802,7 @@ Notice:
 With your storage mounted, `.local` domain broadcasting, Transmission downloading headlessly, Samba sharing across all personal devices, and FTP open for camera feeds or script automations:
 
 - **Media Streaming**: Spin up a Docker container with **Jellyfin** or **Plex**, mounting `/srv/nas/media` and `/srv/nas/downloads/complete` as read-only volumes.
-- **Automation (*arr Stack)**: Install Sonarr and Radarr to automatically send torrents to Transmission and organize them into `/srv/nas/media`.
+- **Automation (\*arr Stack)**: Install Sonarr and Radarr to automatically send torrents to Transmission and organize them into `/srv/nas/media`.
 - **Disk Health Monitoring**: Install `smartmontools` (`sudo apt install smartmontools`) and run periodic health checks on your SATA drive (`sudo smartctl -H /dev/sdb`).
 
 Enjoy breathing new life into your old hardware!
@@ -781,6 +814,7 @@ Enjoy breathing new life into your old hardware!
 > **Note:** This tutorial was written with AI assistance under hands-on human technical guidance and real-world testing.
 >
 > The setup, permission architecture, and firewall rules in this guide were verified and deployed on an **H96 MAX TV Box (Rockchip)**:
+>
 > - **Processor (SoC):** Rockchip RK3318 (Quad-Core 64-bit ARM Cortex-A53 @ up to 1.5 GHz)
 > - **GPU:** Mali-450 Penta-Core
 > - **Memory (RAM):** 4 GB DDR3

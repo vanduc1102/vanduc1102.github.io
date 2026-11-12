@@ -31,13 +31,13 @@ kubectl create namespace dev && kubectl create namespace prod
 
 ## Task 2. Migrate to an optimized node pool
 
-- List all node pool
+- List all node pools:
 
 ```
 gcloud container node-pools list --cluster=cluster-name-change-me
 ```
 
-- Create a new node pool
+- Create a new node pool:
 
 ```
 gcloud container node-pools create node-pool-change-me \
@@ -46,22 +46,22 @@ gcloud container node-pools create node-pool-change-me \
   --num-nodes=2
 ```
 
-- Cordoning off and Draining `default-pool`.
-  - Cordon the existing node pool
+- Cordon off and drain `default-pool`:
+  - Cordon the existing node pool:
   ```
   for node in $(kubectl get nodes -l cloud.google.com/gke-nodepool=node-pool-change-me -o=name); do kubectl cordon "$node"; done
   ```
-  - Drain the existing node pool
+  - Drain the existing node pool:
   ```
   for node in $(kubectl get nodes -l cloud.google.com/gke-nodepool=node-pool-change-me -o=name); do kubectl drain --force --ignore-daemonsets --delete-local-data --grace-period=10 "$node" ; done
   ```
-- Checking pods running on new node-pool
+- Check pods running on the new node pool:
 
 ```
 kubectl get pods --namespace dev -o wide
 ```
 
-- Delete old node-pool
+- Delete the old node pool:
 
 ```
 gcloud container node-pools delete default-pool --cluster hello-demo-cluster --zone us-central1-a
@@ -69,13 +69,13 @@ gcloud container node-pools delete default-pool --cluster hello-demo-cluster --z
 
 ## Task 3. Apply a frontend update
 
-- Create a pod disruption budget
+- Create a pod disruption budget:
 
 ```
 kubectl create poddisruptionbudget gb-pdb-change-me --namespace dev --selector app=frontend --min-available 1
 ```
 
-- Update Image version: [Source file on Github](https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml#L258)
+- Update Image version: [Source file on GitHub](https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml#L258)
 - Add a newline of `imagePullPolicy:Always` next to `image:` tag
 - Set edit user `export KUBE_EDITOR="nano"`
 - Describe deployment: `kubectl describe deployments`

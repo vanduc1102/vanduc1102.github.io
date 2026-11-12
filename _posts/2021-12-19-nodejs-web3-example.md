@@ -6,13 +6,15 @@ categories: [nodejs]
 tags: [nodejs, web3]
 ---
 
-Before we begin, let register an <https://infura.io/> account, they provides endpoints to access to ETH Node for testing.
+Before we begin, register an account at [Infura](https://infura.io/) to get access to Ethereum node endpoints for testing.
 
-Dependencies
+Dependencies:
 
 `yarn add web3`
 
-## To create a network instance: You can listen on transactions, events, of the whole chain.
+## 1. Create a Network Instance
+
+You can listen to transactions and events across the entire blockchain:
 
 ```js
 const Web3 = require("web3");
@@ -26,7 +28,9 @@ web3Instance.eth
 	.then((blockNumber) => console.log("Current block number: ", blockNumber));
 ```
 
-## To create a contract instance - ERC20: You can listen events and call methods of a given contract.
+## 2. Create an ERC-20 Contract Instance
+
+You can listen to events and call methods on a given smart contract:
 
 ```js
 const Web3EthContract = require("web3-eth-contract");
@@ -49,4 +53,4 @@ contractInstance.events
 	.on("connected", (str) => console.log("Connected: ", str));
 ```
 
-Repository on github: <https://github.com/vanduc1102/samples/tree/master/nodejs/web3-nodejs>
+Repository on GitHub: <https://github.com/vanduc1102/samples/tree/master/nodejs/web3-nodejs>

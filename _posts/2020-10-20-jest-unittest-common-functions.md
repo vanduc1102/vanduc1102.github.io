@@ -19,7 +19,7 @@ However, the equivalent methods `queryBy*` and `queryAllBy*` instead return `nul
 expect(getAllByTestId('collection-share-button')).toHaveLength(1);
 ```
 
-## None Existence
+## Non-Existence
 
 ```
 expect(() => getByText('your text')).toThrow('Unable to find an element');

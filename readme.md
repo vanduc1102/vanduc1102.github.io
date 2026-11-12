@@ -6,10 +6,9 @@ Install [Ruby](https://www.ruby-lang.org/en/) with [rbenv](https://github.com/rb
 
 DO NOT use the default ruby of MacOS which located in `/usr/bin/ruby` because it is required [ownership permissions](https://gist.github.com/KetchCyork/ab896f1c8e3e845b8d17d3aef169b871)
 
-
 ```bash
-rbenv install 2.7.2
-rbenv local 2.7.2
+rbenv install 3.3.5
+rbenv local 3.3.5
 eval "$(rbenv init - zsh)"
 gem install bundler
 ```

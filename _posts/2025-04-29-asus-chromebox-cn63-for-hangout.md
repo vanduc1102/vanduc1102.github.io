@@ -6,11 +6,11 @@ categories: [computer]
 tags: [minpc, os]
 ---
 
-I've got 2 Asus Chromeboxes CN62 GUADO for Meet (CFM)
+I acquired 2 Asus Chromebox CN62 GUADO for Meet (CFM) units.
 
-They are both unenrolled, it was for my company meeting before.
+They are both unenrolled devices previously used for company meetings.
 
-Here the detail I get from the devices
+Here are the system details from the devices:
 
 ```shell
 Google Chrome: Version 91.0.4456.0 (Official Build) dev (64-bit)
@@ -37,32 +37,32 @@ ASUS Chromebox 2 (CN62) for meetings G015U
 - Chrome OS
 - monitor: none
 
-## Things work
+## What Worked
 
-- Replaced the Storage of 16GB to 256GB , it is M.2 SATA SSD
-- Upgraded the RAM from 4GB to 16GB, the RAM is DDR3L for Laptop 1.35V. Voltage is important, I bought 8GBx2 RAM , but it was 1.5V, they are not compatible.
-- I've created an USB to recovery, 4GB USB is accepted.
+- Replaced the 16GB storage with a 256GB M.2 SATA SSD.
+- Upgraded the RAM from 4GB to 16GB using DDR3L laptop memory (1.35V). Voltage is critical: standard 1.5V DDR3 RAM is incompatible.
+- Created a recovery USB (a 4GB drive is sufficient).
 
-## Things do not work
+## What Did Not Work
 
-- Many tutorials say at the recovery screen, hit `Ctrl+D` to enter the `Dev Mode`, But it does not work for me. Tried so many times.
+- Many tutorials say to hit `Ctrl+D` at the recovery screen to enter Developer Mode, but it did not work for me initially despite many attempts.
 
-- I will try another ways, if I can get into the `Dev Mode`, I will install new firmware from [MrChromebox](https://docs.mrchromebox.tech/), then Windows 11
+- I will explore other methods; once in Developer Mode, I plan to install custom firmware from [MrChromebox](https://docs.mrchromebox.tech/) and then Windows 11.
 
 ## Update 2025-05-12
 
-- `Ctrl+D` works on Logitech keyboard, I failed many times with a mechanic keyboard.
-- Before enter DevMode, you are better to PowerWash the Chrombox.
-- Upgraded to 16GB RAM DDR3 PCL (1.35v) , SSD 256GB
-- I've installed dual boot for Windows 10 and Fedora 42
-- To install Windows, You will have to create bootale USB from Windows, Download the Windows images from official page, and use Rufus to create the bootable USB. I failed many times with bootable USB created from Linux and Mac.
-- I installed Windows 11 successfully on original 4GB RAM, but when I replaced to 16GB RAM, the installation keep failing. I have to install Windows 10 ( less picky).
-- The Hangout Remote works on Windows and Linux, You can repair by holding both `Menu + Mute` buttons at the same time for 4-6 seconds.
-- Huge thanks to MrChromebox, you are helping to save environments.
+- `Ctrl+D` worked using a Logitech membrane keyboard; it repeatedly failed when using a mechanical keyboard.
+- Before entering Developer Mode, it is best to Powerwash the Chromebox.
+- Upgraded to 16GB RAM DDR3L (1.35V) and a 256GB SSD.
+- Configured dual-booting with Windows 10 and Fedora 42.
+- To install Windows, create the bootable USB from a Windows machine using Rufus with the official ISO image. Creating a bootable USB on macOS or Linux failed repeatedly.
+- Windows 11 installed successfully with the original 4GB RAM, but when upgraded to 16GB RAM, the installation kept failing. I opted for Windows 10 instead, which is less picky.
+- The Hangouts Remote works on both Windows and Linux. You can re-pair it by holding both `Menu + Mute` buttons simultaneously for 4–6 seconds.
+- Huge thanks to MrChromebox for helping keep old hardware functional and out of landfills.
 
 ## Update 2025-05-16
 
-- Fixed broken CPU cooling fan, the fan is compatible with NUC NUC5i7RYH NUC6i3SYH NUC6i3SYK NUC6i5SYH NUC6i5SYK NUC7i3BNH , I bought one on shopee.vn
+- Replaced the broken CPU cooling fan. The fan is compatible with Intel NUC models (NUC5i7RYH, NUC6i3SYH, NUC6i3SYK, NUC6i5SYH, NUC6i5SYK, NUC7i3BNH); I ordered a replacement on shopee.vn.
 
 ## References
 

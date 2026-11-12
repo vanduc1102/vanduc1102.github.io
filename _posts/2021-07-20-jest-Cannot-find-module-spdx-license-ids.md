@@ -40,7 +40,7 @@ module.exports = {
 };
 ```
 
-We will need to add `json`
+We need to add `json`:
 
 ```js
 module.exports = {
@@ -51,14 +51,14 @@ module.exports = {
 
 ## Reason
 
-The package that failed this time is [spdx-license-ids](https://github.com/jslicense/spdx-license-ids), but the json file is used internally.
-jest will only read files with the extension specified in [moduleFileExtensions in config](https://jestjs.io/docs/en/configuration#modulefileextensions-arraystring).
-So It couldn't read the json file used by `spdx-license-ids` and got an error.
+The package that failed is [spdx-license-ids](https://github.com/jslicense/spdx-license-ids), which uses JSON files internally.
+Jest only reads files with extensions specified in [`moduleFileExtensions`](https://jestjs.io/docs/en/configuration#modulefileextensions-arraystring).
+Because `json` was missing, Jest could not read the JSON files inside `spdx-license-ids` and threw an error.
 
-By the way, the initial value of moduleFileExtensions of jest is
+By the way, the default value of `moduleFileExtensions` in Jest is:
 
 `["js", "json", "jsx", "ts", "tsx", "node"]`
 
-So this error wouldn't have happened if I hadn't made any extra settings 😇
+So this error wouldn't have occurred if I hadn't customized the extensions in the first place 😇
 
 Source: [https://qiita.com/nekoshita_yuki/items/b20b76cad37a6c9748b8](https://qiita.com/nekoshita_yuki/items/b20b76cad37a6c9748b8)
